@@ -34,6 +34,8 @@ public class TaskService {
     }
 
     public TaskDTO saveTask(TaskDTO taskDTO){
+
+        //Darle una vuelta
         Task task = mapToEntity(taskDTO);
 
         Task savedTask = taskRepository.save(task);
@@ -86,7 +88,6 @@ public class TaskService {
         task.setTitle(taskDTO.getTitle());
         task.setDescription(taskDTO.getDescription());
         task.setDueDate(taskDTO.getDueDate());
-        task.setStatus(taskDTO.getStatus());
         return task;
     }
 

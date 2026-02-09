@@ -23,20 +23,20 @@ public class TaskController {
 
     @GetMapping
     public ResponseEntity<List<TaskDTO>> getTasks(@RequestParam(required = false) TaskStatus status){
-        List<TaskDTO> tasks;
+        List<TaskDTO> tasksDTO;
         if (status != null) {
-            tasks = taskService.getTasksByStatus(status);
+            tasksDTO = taskService.getTasksByStatus(status);
         } else {
-            tasks = taskService.getAllTasks();
+            tasksDTO = taskService.getAllTasks();
         }
-        return ResponseEntity.ok(tasks);
+        return ResponseEntity.ok(tasksDTO);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<TaskDTO> getTaskById(@PathVariable Integer id) {
-        TaskDTO task = taskService.getTaskById(id);
-        if(task != null) {
-            return ResponseEntity.ok().body(task);
+        TaskDTO taskDTO = taskService.getTaskById(id);
+        if(taskDTO != null) {
+            return ResponseEntity.ok().body(taskDTO);
         }
         return ResponseEntity.notFound().build();
     }
