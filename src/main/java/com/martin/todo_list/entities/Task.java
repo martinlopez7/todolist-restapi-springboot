@@ -81,5 +81,12 @@ public class Task {
         this.status = status;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 
 }

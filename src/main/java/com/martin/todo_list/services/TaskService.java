@@ -34,8 +34,6 @@ public class TaskService {
     }
 
     public TaskDTO saveTask(TaskDTO taskDTO){
-
-        //Darle una vuelta
         Task task = mapToEntity(taskDTO);
 
         Task savedTask = taskRepository.save(task);
@@ -68,7 +66,6 @@ public class TaskService {
     }
 
     public boolean deleteTask(Integer id) {
-
         Task task = taskRepository.findById(id).orElse(null);
         if (task != null) {
             taskRepository.delete(task);
