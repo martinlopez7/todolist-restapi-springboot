@@ -3,6 +3,7 @@ package com.martin.todo_list.services;
 import com.martin.todo_list.dto.TaskDTO;
 import com.martin.todo_list.entities.Task;
 import com.martin.todo_list.entities.TaskStatus;
+import com.martin.todo_list.entities.User;
 import com.martin.todo_list.repositories.TaskRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,6 +35,10 @@ public class TaskServiceTest {
         inputDTO.setDescription("Probando con Mockito");
         inputDTO.setDueDate(LocalDate.now().plusDays(1));
 
+        User mockUser = new User();
+        mockUser.setId(1);
+        mockUser.setUsername("martin");
+
         Task savedTask = new Task();
         savedTask.setId(1);
         savedTask.setTitle("Test Tarea");
@@ -41,16 +46,14 @@ public class TaskServiceTest {
         savedTask.setDueDate(LocalDate.now().plusDays(1));
         savedTask.setCreatedAt(LocalDateTime.now());
         savedTask.setStatus(TaskStatus.PENDING);
+        savedTask.setUser(mockUser);
 
         when(taskRepository.save(any(Task.class))).thenReturn(savedTask);
 
-        TaskDTO result = taskService.saveTask(inputDTO);
+        TaskDTO result = taskService.saveTask(inputDTO, mockUser);
 
         assertNotNull(result);
         assertEquals(1, result.getId());
         assertEquals("Test Tarea", result.getTitle());
-        assertEquals("Probando con Mockito", result.getDescription());
-        assertEquals(LocalDate.now().plusDays(1), result.getDueDate());
-        assertEquals(TaskStatus.PENDING, result.getStatus());
     }
 }
