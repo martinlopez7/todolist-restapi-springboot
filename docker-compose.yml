@@ -25,6 +25,7 @@ services:
       SPRING_DATASOURCE_USERNAME: martin
       SPRING_DATASOURCE_PASSWORD: martin
       SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
+      JWT_SECRET: hmzkPUDQDPW1MlgGKIv66wuzqh+TDZ6Eb1bNKyzar5o=
 
 volumes:
   postgres_data:

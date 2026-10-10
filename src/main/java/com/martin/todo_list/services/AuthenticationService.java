@@ -1,5 +1,8 @@
-package com.martin.todo_list.auth;
+package com.martin.todo_list.services;
 
+import com.martin.todo_list.auth.AuthenticationRequest;
+import com.martin.todo_list.auth.AuthenticationResponse;
+import com.martin.todo_list.auth.RegisterRequest;
 import com.martin.todo_list.config.JwtService;
 import com.martin.todo_list.entities.Role;
 import com.martin.todo_list.entities.User;

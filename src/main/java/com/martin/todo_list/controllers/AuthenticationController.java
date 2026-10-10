@@ -2,7 +2,7 @@ package com.martin.todo_list.controllers;
 
 import com.martin.todo_list.auth.AuthenticationRequest;
 import com.martin.todo_list.auth.AuthenticationResponse;
-import com.martin.todo_list.auth.AuthenticationService;
+import com.martin.todo_list.services.AuthenticationService;
 import com.martin.todo_list.auth.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

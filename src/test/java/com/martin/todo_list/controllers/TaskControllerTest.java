@@ -1,6 +1,7 @@
 package com.martin.todo_list.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.martin.todo_list.config.JwtService;
 import com.martin.todo_list.dto.TaskDTO;
 import com.martin.todo_list.entities.TaskStatus;
 import com.martin.todo_list.entities.User;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -34,6 +36,12 @@ public class TaskControllerTest {
 
     @MockitoBean
     private UserRepository userRepository;
+
+    @MockitoBean
+    private JwtService jwtService;
+
+    @MockitoBean
+    private UserDetailsService userDetailsService;
 
     private ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules();
 
