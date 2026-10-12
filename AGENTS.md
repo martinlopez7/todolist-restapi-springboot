@@ -25,8 +25,7 @@ Config gotcha: `src/main/resources/application.properties` points at database
 (or override the datasource). The compose `app-backend` service avoids this by
 overriding `SPRING_DATASOURCE_URL` to `todo_db`.
 
-- `spring.jpa.hibernate.ddl-auto=create-drop`: schema is recreated on start and
-  dropped on shutdown, so all data is lost every restart. No Flyway/Liquibase.
+- `spring.jpa.hibernate.ddl-auto=update`
 - `TodoListApplicationTests` (`@SpringBootTest`) boots the full context, so
   `./mvnw test` needs Postgres reachable, not just the isolated unit tests.
 
@@ -45,7 +44,7 @@ overriding `SPRING_DATASOURCE_URL` to `todo_db`.
 
 - `/auth/register` and `/auth/login` are public; all other routes need
   `Authorization: Bearer <jwt>`. CSRF disabled, stateless sessions.
-- JWT signing secret is hardcoded in `config/JwtService.java`; tokens last 24h.
+- JWT tokens last 24h.
 - Endpoints: `POST /auth/register`, `POST /auth/login`, and `GET/POST/PUT/PATCH/DELETE /tasks`
   (PATCH takes `?status=` with enum `TaskStatus`: PENDING, IN_PROGRESS, COMPLETED).
 - OpenAPI UI (springdoc) is available at `/swagger-ui.html`.
